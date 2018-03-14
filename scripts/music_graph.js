@@ -28,7 +28,7 @@ const legend = d3.legendColor()
     .classPrefix('legend');
 
 
-d3.json('top50.json', function (error, graph) {
+d3.json('mytop50.json', function (error, graph) {
     if (error) throw error;
 
     const types = d3.set(graph.edges.map(e => e.type)).values();
@@ -214,9 +214,9 @@ function dragged(d) {
 
 function genreX(n) {
     const genres = n.genres.join('-');
-    if (genres.includes('hip hop') || genres.includes('rap')) {
+    if (genres.includes('indie rock') || genres.includes('modern rock')) {
         return width / 4 * 3;
-    } else if (genres.includes('house')) {
+    } else if (genres.includes('indie folk')) {
         return width / 4;
     } else {
         return width;
@@ -225,7 +225,7 @@ function genreX(n) {
 
 function genreY(n) {
     const genres = n.genres.join('-');
-    if (genres.length === 0 && !genres.includes('hip hop') && !genres.includes('rap') && genres.includes('house')) {
+    if (genres.length === 0 && !genres.includes('indie rock') && !genres.includes('modern rock') && genres.includes('house')) {
         return height / 4;
     } else {
         return height / 2;
